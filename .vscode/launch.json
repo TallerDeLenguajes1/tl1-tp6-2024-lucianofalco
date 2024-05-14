@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        },
+        {
+            "name": "C#: tl1-tp6-2024-lucianofalco",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}\\tl1-tp6-2024-lucianofalco.csproj",
+            "launchConfigurationId": "TargetFramework=;tl1-tp6-2024-lucianofalco"
+        }
+    ]
+}
