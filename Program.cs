@@ -10,22 +10,30 @@ una vez que termine de realizar la operación le pregunte si desea realizar otro
 using System;
 using System.Linq.Expressions;
 
-Console.WriteLine("Ingrese un numero A");
-int A = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Ingrese un numero B");
-int B = Convert.ToInt32(Console.ReadLine());
+float A;
+float numero;
+float numero2;
+Console.WriteLine("Ingrese un numero");
+while (!float.TryParse(Console.ReadLine(), out A))
+{
+    Console.WriteLine("Por favor, introduce un número válido.");
+    continue;
+}
+
 int opcion = 0;
 
-while (opcion != 5) // Cambia este número al número máximo de opciones en tu menú
+while (opcion != 6) // Cambia este número al número máximo de opciones en tu menú
 {
+    Console.WriteLine();
     Console.WriteLine("Menú:");
-    Console.WriteLine("1. Sumar");
-    Console.WriteLine("2. Restar");
-    Console.WriteLine("3. Multiplicar");
-    Console.WriteLine("4. Dividir");
-    Console.WriteLine("5. Salir");
-
+    Console.WriteLine("1. Valor absoluto");
+    Console.WriteLine("2. Cuadrado");
+    Console.WriteLine("3. Raiz cuadrada");
+    Console.WriteLine("4. Seno");
+    Console.WriteLine("5. Coseno");
+    Console.WriteLine("6. Salir");
     Console.Write("Elige una opción: ");
+
     if (!int.TryParse(Console.ReadLine(), out opcion))
     {
         Console.WriteLine("Por favor, introduce un número válido.");
@@ -36,34 +44,59 @@ while (opcion != 5) // Cambia este número al número máximo de opciones en tu 
     {
         case 1:
             Console.WriteLine("Has seleccionado la Opción 1");
-            Console.WriteLine("La suma de A + B es = " + A + B);
+            Console.WriteLine("Valor absoluto = " + Math.Abs(A));
             break;
+
         case 2:
             Console.WriteLine("Has seleccionado la Opción 2");
-            Console.WriteLine("La Resta de A - B es = " + (A - B));
+            Console.WriteLine("A al cuadrado: " + Math.Pow(A, 2));
             break;
+
         case 3:
             Console.WriteLine("Has seleccionado la Opción 3");
-            Console.WriteLine("La multiplicacion de A * B es = " + A * B);
+            Console.WriteLine("La rais cuadrada es: " + Math.Sqrt(A));
             break;
+
         case 4:
             Console.WriteLine("Has seleccionado la Opción 4");
-            if (B == 0)
-            {
-                Console.WriteLine("Indefnido: no se puede dividir en cero");
-            }
-            else
-            {
-                Console.WriteLine("La division de A / b es = " + A / B);
-            }
+            Console.WriteLine("El seno es: " + Math.Asin(A));
             break;
+
         case 5:
+            Console.WriteLine("Has seleccionado la Opción 5");
+            Console.WriteLine("El coseno es: " + Math.Acos(A));
+            break;
+
+        case 6:
             Console.WriteLine("Saliendo del programa...");
             break;
         default:
             Console.WriteLine("Opción no válida. Por favor, elige una opción válida.");
             break;
     }
+
+    Console.WriteLine("Ingrese un numero.");
+    if (!float.TryParse(Console.ReadLine(), out numero))
+    {
+        Console.WriteLine("Por favor, introduce un número válido.");
+        continue;
+    }
+    Console.WriteLine("Ingrese un numero.");
+    if (!float.TryParse(Console.ReadLine(), out numero2))
+    {
+        Console.WriteLine("Por favor, introduce un número válido.");
+        continue;
+    }
+
+    // Calcular y mostrar la parte entera del número (truncamiento)
+    Console.WriteLine($"Parte entera: {Math.Truncate(numero)}");
+
+    // Calcular y mostrar el máximo entre los dos números
+    Console.WriteLine($"Máximo entre {numero} y {numero2}: {Math.Max(numero, numero2)}");
+
+    // Calcular y mostrar el mínimo entre los dos números
+    Console.WriteLine($"Mínimo entre {numero} y {numero2}: {Math.Min(numero, numero2)}");
+
 }
 
 
