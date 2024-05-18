@@ -10,28 +10,34 @@ una vez que termine de realizar la operación le pregunte si desea realizar otro
 using System;
 using System.Linq.Expressions;
 
-float A;
+
 float numero;
 float numero2;
 Console.WriteLine("Ingrese un numero");
-while (!float.TryParse(Console.ReadLine(), out A))
+while (!float.TryParse(Console.ReadLine(), out numero))
 {
     Console.WriteLine("Por favor, introduce un número válido.");
     continue;
 }
 
+while (!float.TryParse(Console.ReadLine(), out numero2))
+{
+    Console.WriteLine("Por favor, introduce un número válido.");
+    continue;
+}
+
+
 int opcion = 0;
 
-while (opcion != 6) // Cambia este número al número máximo de opciones en tu menú
+while (opcion != 5) // Cambia este número al número máximo de opciones en tu menú
 {
     Console.WriteLine();
     Console.WriteLine("Menú:");
-    Console.WriteLine("1. Valor absoluto");
-    Console.WriteLine("2. Cuadrado");
-    Console.WriteLine("3. Raiz cuadrada");
-    Console.WriteLine("4. Seno");
-    Console.WriteLine("5. Coseno");
-    Console.WriteLine("6. Salir");
+    Console.WriteLine("1. Sumar");
+    Console.WriteLine("2. Restar");
+    Console.WriteLine("3. Multiplicar");
+    Console.WriteLine("4. Dividir");
+    Console.WriteLine("5. Salir");
     Console.Write("Elige una opción: ");
 
     if (!int.TryParse(Console.ReadLine(), out opcion))
@@ -44,30 +50,32 @@ while (opcion != 6) // Cambia este número al número máximo de opciones en tu 
     {
         case 1:
             Console.WriteLine("Has seleccionado la Opción 1");
-            Console.WriteLine("Valor absoluto = " + Math.Abs(A));
+            Console.WriteLine("La suma de es: " + (numero + numero2));
             break;
 
         case 2:
             Console.WriteLine("Has seleccionado la Opción 2");
-            Console.WriteLine("A al cuadrado: " + Math.Pow(A, 2));
+            Console.WriteLine("La resta es : " + (numero - numero2));
             break;
 
         case 3:
             Console.WriteLine("Has seleccionado la Opción 3");
-            Console.WriteLine("La rais cuadrada es: " + Math.Sqrt(A));
+            Console.WriteLine("El producto es: " + (numero * numero2));
             break;
 
         case 4:
             Console.WriteLine("Has seleccionado la Opción 4");
-            Console.WriteLine("El seno es: " + Math.Asin(A));
+            if (numero2 == 0)
+            {
+                Console.WriteLine("No se puede dividir en 0: " );
+            }
+            else
+            {
+                Console.WriteLine("El cociente es:  " + numero / numero2);
+            }
             break;
 
         case 5:
-            Console.WriteLine("Has seleccionado la Opción 5");
-            Console.WriteLine("El coseno es: " + Math.Acos(A));
-            break;
-
-        case 6:
             Console.WriteLine("Saliendo del programa...");
             break;
         default:
